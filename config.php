@@ -1,13 +1,13 @@
 <?php
 
-$db_host = "localhost";
-$db_name = "users";
-$db_user = "root";
-$db_pass = "";
+const DB_HOST = "localhost";
+const DB_NAME = "users";
+const DB_USER = "root";
+const DB_PASS = "";
 
 try
 {
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 }
 catch(throwable $t)
 {
