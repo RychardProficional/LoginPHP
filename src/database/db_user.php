@@ -1,12 +1,14 @@
 <?php
 
-abstract class DB_user
+require_once "./db.php";
+
+abstract class DB_user extends DB
 {
     protected $conn = null;
     protected function createUser($user, $pass)
     {
         $q = "";
-        self::$conn->query($q);
+        parent::dataQuery(self::$conn, $q);
     }
 
     protected function readUser($id)
