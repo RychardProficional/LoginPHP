@@ -2,14 +2,9 @@
 
 abstract class DB
 {
-    protected function dataQuery($conn, $query)
-    {
-
-    }
-
-    protected function dataExist($data, $dataname)
+    protected function dataExist($conn, $data, $dataname)
     {
         $q = "";
-        ;
+        $conn->query($q);
     }
 }

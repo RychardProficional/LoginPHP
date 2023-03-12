@@ -8,19 +8,21 @@ abstract class DB_user extends DB
     protected function createUser($user, $pass)
     {
         $q = "";
-        parent::dataQuery(self::$conn, $q);
+        self::$conn->query($q);
+        return true;
     }
 
     protected function readUser($id)
     {
         $q = "";
-        self::$conn->query($q);
+        return self::$conn->query($q);
     }
     
     protected function updateUser($id, $user, $pass)
     {
         $q = "";
         self::$conn->query($q);
+        return true;
     }
 
     protected function deleteUser($id)
@@ -32,13 +34,7 @@ abstract class DB_user extends DB
     protected function getIdUser($user, $pass)
     {
         $q = "";
-        self::$conn->query($q);
-    }
-
-    protected function dataExist($data, $dataname)
-    {
-        $q = "";
-        self::$conn->query($q);
+        return self::$conn->query($q);
     }
 
     abstract public static function start($connection);

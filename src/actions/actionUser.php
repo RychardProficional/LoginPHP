@@ -5,7 +5,7 @@ class ActionsUser extends DB_user
 {
     public static function create($user, $pass)
     {
-        if($user && $pass && !parent::dataExist($user, "user"))
+        if($user && $pass && !parent::dataExist(self::$conn, $user, "user"))
         {
             return parent::createUser($user, $pass);
         }
@@ -14,7 +14,7 @@ class ActionsUser extends DB_user
     
     public static function read($id)
     {
-        if(parent::dataExist($id, "id"))
+        if(parent::dataExist(self::$conn, $id, "id"))
         {
             return parent::readUser($id);
         }
@@ -23,7 +23,7 @@ class ActionsUser extends DB_user
 
     public static function update($id, $user, $pass)
     {
-        if(parent::dataExist($id, "id") && $user && $pass)
+        if(parent::dataExist(self::$conn, $id, "id") && $user && $pass)
         {
             return parent::updateUser($id, $user, $pass);
         }
@@ -32,7 +32,7 @@ class ActionsUser extends DB_user
 
     public static function delete($id)
     {
-        if(parent::dataExist($id, "id"))
+        if(parent::dataExist(self::$conn, $id, "id"))
         {
             parent::deleteUser($id);
         }
@@ -40,7 +40,7 @@ class ActionsUser extends DB_user
 
     public static function getId($user, $pass)
     {
-        if(parent::dataExist($user, "username") && parent::dataExist($pass, "password"))
+        if(parent::dataExist(self::$conn, $user, "username") && parent::dataExist(self::$conn, $pass, "password"))
         {
             return parent::getIdUser($user, $pass);
         }
