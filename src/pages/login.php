@@ -1,7 +1,11 @@
 <?php
 if(isset($_POST['user']) && isset($_POST['pass']))
 {
-    header("location: ../actions/verification.php");
+    require_once "../actions/verification.php";
+    if(Verification::login($_POST['user'], $_POST['pass']))
+    {
+        
+    }
     exit();
 }
 ?>

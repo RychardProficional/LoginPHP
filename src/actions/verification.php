@@ -5,4 +5,10 @@ require_once("./actionUser.php");
 session_start();
 ActionsUser::start($conn);
 
-if()
+class Verification
+{
+    public static function login()
+    {
+        
+    }
+}
