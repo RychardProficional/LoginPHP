@@ -1,12 +1,22 @@
 <?php
+session_start();
+
 if(isset($_POST['user']) && isset($_POST['pass']))
 {
+    require_once "../../config.php";
     require_once "../actions/verification.php";
-    if(Verification::login($_POST['user'], $_POST['pass']))
+
+    if(!Verification::login($_POST['user'], $_POST['pass']))
     {
-        
+        $_SESSION['error'] = 0;
+        $_SESSION['username'] = $_POST['user'];
+        $_SESSION['password'] = $_POST['pass'];
+
+        header("location: ./homepage.php");
+        exit();
     }
-    exit();
+    
+    $_SESSION['error'] = 1;
 }
 ?>
 
@@ -20,6 +30,18 @@ if(isset($_POST['user']) && isset($_POST['pass']))
 </head>
 <body>
     <main class="content-login-form">
+
+        <?php   if(isset($_SESSION['error'])): 
+                    if ($_SESSION['error']):?>
+                        <span class="content-error">Ocorreu um erro ao tentar fazer login</span>
+        <?php 
+                    endif;
+                else:
+                    header("location: ./homepage.php");
+                    exit();
+                endif;
+        ?>
+
         <form action="./login.php" method="post" class="login-form">
             <label for="user" class="content-imput">
                 <span class="login-form-label">Usuário: </span>
